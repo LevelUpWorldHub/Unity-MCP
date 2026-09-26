@@ -1,0 +1,4 @@
+{
+  "name": "Unity-MCP CLI",
+  "install": "cd cli && npm ci && npm run build"
+}
