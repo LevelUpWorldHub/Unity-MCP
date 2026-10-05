@@ -1,4 +1,4 @@
 {
-  "name": "Unity-MCP CLI",
-  "install": "cd cli && npm ci && npm run build"
+  "name": "Unity-MCP",
+  "install": "set -euo pipefail\nif ! command -v dotnet >/dev/null 2>&1 || ! dotnet --list-sdks 2>/dev/null | grep -q '^8\\.'; then\n  curl -fsSL https://dot.net/v1/dotnet-install.sh -o /tmp/dotnet-install.sh\n  sudo bash /tmp/dotnet-install.sh --channel 8.0 --install-dir /usr/share/dotnet\n  sudo ln -sfn /usr/share/dotnet/dotnet /usr/local/bin/dotnet\nfi\nnpm ci --prefix cli\nnpm run build --prefix cli\ndotnet restore Unity-MCP-Plugin/Tests~/EngineFree/EngineFree.csproj\n"
 }
